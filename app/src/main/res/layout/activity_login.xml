@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mustofin.loginmvvm.viewmodel.LoginViewModel" />
+    </data>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="70dp"
+        tools:context=".view.activity.LoginActivity">
+
+        <TextView
+            android:id="@+id/login_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@{viewmodel.loginMessage}"
+            android:visibility="@{viewmodel.loginMessageVisibility}"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"/>
+
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_message"
+            android:hint="Username"
+            android:layout_marginBottom="10dp"
+            app:addTextChangedListener="@{viewmodel.usernameUpdate}" />
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:ems="10"
+            android:layout_below="@+id/login_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            app:addTextChangedListener="@{viewmodel.passwordUpdate}" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_below="@+id/login_password"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:onClick="@{viewmodel.loginAuthentication}"/>
+
+    </RelativeLayout>
+
+</layout>
